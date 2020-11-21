@@ -3,7 +3,7 @@ export interface JwtPayload {
   last_name: string;
   email: string;
   location?: string;
-  password?: string;
-  user_role_id?: string;
-  user_role?: object;
+  user_role_id: string;
+  user_role_label: string;
+  user_role_is_deleted: boolean;
 }
