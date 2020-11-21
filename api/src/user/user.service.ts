@@ -1,6 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { JwtPayload } from 'src/auth/interfaces/jwt-payload.interface';
+import { UserRole } from 'src/user-role/user-role.entity';
+import { UserRoleRepository } from 'src/user-role/user-role.repository';
+import { EditProfileDto } from './dto/edit-profile.dto';
 import { User } from './user.entity';
 import { UserRepository } from './user.repository';
 
@@ -8,6 +11,7 @@ import { UserRepository } from './user.repository';
 export class UserService {
   constructor(
     @InjectRepository(User) private userRepository: UserRepository,
+    @InjectRepository(UserRole) private userRoleRepository: UserRoleRepository,
     private logger: Logger,
   ) {}
 
@@ -45,7 +49,11 @@ export class UserService {
   }
   async get_all_users(): Promise<object> {
     try {
+      const get_user_role = await this.userRoleRepository.findOne({
+        role_label: 'USER',
+      });
       const users_data = await this.userRepository.find({
+        where: { user_role_id: get_user_role.id },
         relations: ['user_role'],
       });
 
@@ -59,6 +67,35 @@ export class UserService {
       console.log(error);
 
       this.logger.error('Get Users Service Failed ' + error);
+      return {
+        status_code: error.code || 500,
+        status: 'error',
+        message: error.message || 'System Error',
+        error: error.stack || error,
+      };
+    }
+  }
+  async edit_profile(
+    editProfileDto: EditProfileDto,
+    user_id: number,
+  ): Promise<object> {
+    try {
+      const { first_name, last_name, location } = editProfileDto;
+      await this.userRepository.update(user_id, {
+        first_name,
+        last_name,
+        location,
+      });
+
+      return {
+        status_code: 200,
+        status: 'success',
+        message: 'User Updated Successfully',
+      };
+    } catch (error) {
+      console.log(error);
+
+      this.logger.error('Update Profile Service Failed ' + error);
       return {
         status_code: error.code || 500,
         status: 'error',
