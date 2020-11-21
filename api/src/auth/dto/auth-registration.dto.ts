@@ -1,4 +1,5 @@
 import {
+  IsEmail,
   IsNumber,
   IsString,
   Matches,
@@ -14,12 +15,12 @@ export class AuthRegistrationDto {
   last_name: string;
 
   @IsString()
+  @IsEmail()
   email: string;
 
   @IsNumber()
   user_role_id: number;
 
-  @IsString()
   location?: string;
 
   @IsString()
