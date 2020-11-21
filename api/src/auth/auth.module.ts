@@ -13,7 +13,6 @@ const jwtConfig = config.get('jwt');
 
 @Module({
   imports: [
-    UserModule,
     TypeOrmModule.forFeature([UserRepository]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
