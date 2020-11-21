@@ -28,6 +28,10 @@ export class UserRoleSeederService {
    * @function
    */
   create(): Array<Promise<UserRole>> {
+    const cleardb = async () => {
+      await this.userRoleRepository.delete({});
+    };
+    cleardb();
     return this.user_role_date.map(
       async (each_role: { role_label: string }) => {
         try {
