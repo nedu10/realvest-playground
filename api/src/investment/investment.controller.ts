@@ -11,6 +11,8 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { GetUser } from 'src/auth/decorators/get-user.decorators';
+import { JwtPayload } from 'src/auth/interfaces/jwt-payload.interface';
 import { CreateInvestmentDto } from './dto/create-investment.dto';
 import { IChangeInvestmentStatus } from './interfaces/change-status.interface';
 import { InvestmentService } from './investment.service';
@@ -44,6 +46,33 @@ export class InvestmentController {
   get_all_investment(): Promise<object> {
     return this.investmentService.get_all_investment();
   }
+
+  @Get('/make-investment/:investment_id')
+  @UseGuards(AuthGuard())
+  make_investment(
+    @Param('investment_id', ParseIntPipe) investment_id: number,
+    @GetUser() user: JwtPayload,
+  ): Promise<any> {
+    return this.investmentService.make_investment(user.id, investment_id);
+  }
+
+  @Get('/user-investment')
+  @UseGuards(AuthGuard())
+  my_investments(@GetUser() user: JwtPayload): Promise<any> {
+    return this.investmentService.my_investments(user.id);
+  }
+  @Get('/user-investment/:user_investment_id')
+  @UseGuards(AuthGuard())
+  my_single_investment(
+    @Param('user_investment_id', ParseIntPipe) user_investment_id: number,
+    @GetUser() user: JwtPayload,
+  ): Promise<any> {
+    return this.investmentService.my_single_investment(
+      user.id,
+      user_investment_id,
+    );
+  }
+
   @Get('/:investment_id')
   @UseGuards(AuthGuard())
   get_single_investment(

@@ -5,11 +5,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserRepository } from './user.repository';
 import { AuthModule } from 'src/auth/auth.module';
 import { UserRoleRepository } from 'src/user-role/user-role.repository';
+import { UserInvestmentRepository } from 'src/investment/user_investment.repository';
 
 @Module({
   imports: [
     AuthModule,
-    TypeOrmModule.forFeature([UserRepository, UserRoleRepository]),
+    TypeOrmModule.forFeature([
+      UserRepository,
+      UserRoleRepository,
+      UserInvestmentRepository,
+    ]),
   ],
   providers: [UserService, Logger],
   controllers: [UserController],

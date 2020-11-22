@@ -4,10 +4,13 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { UserRole } from 'src/user-role/user-role.entity';
+import { UserInvestment } from 'src/investment/user_investment.entity';
+import { Transaction } from 'src/transaction/transaction.entity';
 
 @Entity()
 export class User extends BaseEntity {
@@ -23,6 +26,22 @@ export class User extends BaseEntity {
   })
   @JoinColumn({ referencedColumnName: 'id', name: 'user_role_id' })
   user_role: UserRole;
+
+  @OneToMany(
+    (type) => UserInvestment,
+    (user_investment) => user_investment.user_id,
+    {
+      eager: false,
+      nullable: true,
+    },
+  )
+  user_investments: UserInvestment[];
+
+  @OneToMany((type) => Transaction, (transaction) => transaction.user_id, {
+    eager: false,
+    nullable: true,
+  })
+  transactions: Transaction[];
 
   @Column()
   first_name: string;
