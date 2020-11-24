@@ -7,35 +7,29 @@
     RealVest
   </a>
     <div>
-        <img src="https://i.imgur.com/ZSkeqnd.jpg" width="30" height="30" class="d-inline-block mr-2 rounded-circle align-top my-2 my-sm-0" />
+        <router-link to="/profile"><img src="https://i.imgur.com/ZSkeqnd.jpg" width="30" height="30" class="d-inline-block mr-2 rounded-circle align-top my-2 my-sm-0" /></router-link>
     </div>
 </nav>
 
         <nav class="mobile-bottom-nav">
 	<div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
-		<div class="mobile-bottom-nav__item-content">
+		<router-link to="/dashboard"><div class="mobile-bottom-nav__item-content">
 			<i class="material-icons">home</i>
 			Dashboard
-		</div>		
+		</div></router-link>		
 	</div>
 	<div class="mobile-bottom-nav__item">		
-		<div class="mobile-bottom-nav__item-content">
-			<i class="material-icons">mail</i>
+		<router-link to="/user"><div class="mobile-bottom-nav__item-content">
+			<i class="material-icons">people</i>
 			Users
-		</div>
+		</div></router-link>
 	</div>
-	<!-- <div class="mobile-bottom-nav__item">
-		<div class="mobile-bottom-nav__item-content">
-			<i class="material-icons">person</i>
-			three
-		</div>		
-	</div> -->
 	
 	<div class="mobile-bottom-nav__item">
-		<div class="mobile-bottom-nav__item-content">
-			<i class="material-icons">phone</i>
+		<router-link to="/investment"><div class="mobile-bottom-nav__item-content">
+			<i class="material-icons">add_businesse</i>
 			Investment
-		</div>		
+		</div></router-link>		
 	</div>
 </nav>
     </div>
@@ -93,4 +87,8 @@ export default {
 		flex-direction:column;		
 	}
 }
+a{
+    text-decoration: none;
+}
+
 </style>
