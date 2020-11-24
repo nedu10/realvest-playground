@@ -4,16 +4,16 @@
     <div class="container">
         <div class="row">
         <div class="col-sm-9">
-          <h2 style="font-size:2.5rem !important">Rick Sanchez</h2>
+          <h2 class="name-t">Rick Sanchez</h2>
         </div>
         </div>
 
       <div class="row" style="margin-top:20px;">
-        <div class="col-sm-3"> 
-          <a href="#"> <img src="https://i.imgur.com/ZSkeqnd.jpg" width="100%" style="object-fit:cover" class="rounded-circle"></a>
+        <div class="col-5 col-sm-3"> 
+          <a href="#"> <img src="https://i.imgur.com/ZSkeqnd.jpg" class="img-p rounded-circle"></a>
         </div>
 
-        <div class="col-sm-6"> 
+        <div class="col-7 col-sm-6"> 
           <h5>Associate Professor, <small>Dept. of Alien Agriculture, Jaarvlar-3 University</small></h5>
           <p>PhD on Molecular Shwanky Physics</p>
           <p>Address: 123 Cuba str Tampa, Fl, Earth 137</p>
@@ -62,6 +62,22 @@ export default {
 <style lang="scss" scoped>
 img{
   max-width:100%
+}
+
+.img-p{
+  object-fit:cover;
+  width: 100%;
+  @media (max-width: 54rem) {
+          width: 100%;
+     }
+}
+
+.name-t{
+  font-size:2.5rem !important;
+  @media (max-width: 54rem) {
+          font-size: 1.5rem;
+          margin-top: 2rem;
+     }
 }
 
 .card {

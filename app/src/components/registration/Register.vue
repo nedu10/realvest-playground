@@ -2,7 +2,16 @@
     <div class="register">
         <div class="register__form">
             <div class="register__form--form">
-                <h2 class="animation a1">Sign Up</h2>
+                <h1 class="span"><router-link to="/">
+                <span>R</span>
+                <span>e</span>
+                <span>a</span>
+                <span>l</span>
+                <span>V</span>
+                <span>e</span>
+                <span>s</span>
+                <span>t</span></router-link>
+            </h1>
           <h4 class="animation a2">
               Create an account to start
           </h4>
@@ -62,10 +71,17 @@ export default {
 <style scoped lang="scss">
 .register{
     display: flex;
-  height: 100vh;   
+    min-height: 100vh; 
+    @media (max-width: 54rem) {
+      display: block;
+  }  
 
   &__form{
     overflow: hidden;
+    @media (max-width: 54rem) {
+      width: 100vw;
+      padding-left: 2rem;
+  }
     // width: 35%;
     &--form{
         display: flex;
@@ -75,20 +91,23 @@ export default {
         animation-duration: 1s;
         animation-fill-mode: both;
         animation-delay: 1s;
-        // padding: 0 6rem;
-        margin-top: 7rem;
+        margin-top: 10rem;
+        
         button{
             height: auto;
             padding: 12px 10px;
             border: 0;
             background-color:#15152d;
             border-radius: 3px;
-            margin-top: 10px;
+            margin-top: 3rem;
             color: #fff;
             letter-spacing: 1px;
             font-family: "Rubik", sans-serif;
             font-size: 1.5rem;
             text-align: center;
+            @media (max-width: 54rem) {
+              width: 90vw;
+            }
         }
         h3{
             margin-top: 1rem;
@@ -97,6 +116,9 @@ export default {
             span a{
                 color: #FF6347!important;
                 text-decoration: none;
+            }
+            @media (max-width: 54rem) {
+              width: 90vw;
             }
         }
 
@@ -119,6 +141,9 @@ export default {
             transition: 0.2s;
             margin-top: 2rem;
             font-size: 1.5rem;
+            @media (max-width: 54rem) {
+              width: 90vw;
+            }
         }
         input:focus {
             border-color: #0f7ef1;
@@ -136,6 +161,11 @@ export default {
   background-repeat: no-repeat;
   background-position: center;
 
+  @media (max-width: 54rem) {
+    flex: 0;
+    display: none;
+  }
+
     h1{
            height: 16rem;
            margin: 3rem 2rem 0 2rem;
@@ -147,7 +177,7 @@ export default {
   font-family: 'Titan One', cursive !important;
   display: inline-block;
   animation: bounce .5s ease infinite alternate;
-  font-size: 8rem !important;
+  font-size: 6rem !important;
   color: #FFF;
   text-shadow: 0 1px 0 #CCC,
                0 2px 0 #CCC,
@@ -229,8 +259,44 @@ h1 span:nth-child(8) { animation-delay: .39s; }
   }
   100% {
     opacity: 1;
-    padding: 20px 40px;
+    padding: 20px 0px;
     width: 440px;
   }
 }
+
+.span{
+           height: 16rem;
+           margin-top: -7rem;
+           @media (max-width: 54rem) {
+            width: 100vw;
+        }
+        }
+
+.span span {
+  display: none;
+
+    @media (max-width: 54rem) {
+      position: relative;
+  top: 2rem;
+  font-family: 'Titan One', cursive !important;
+  display: inline-block;
+  font-size: 2rem !important;
+  color: #7760a4;
+  text-shadow: 0 1px 0 #CCC,
+               0 2px 0 #CCC,
+               0 3px 0 #CCC,
+               0 4px 0 #CCC,
+               0 5px 0 #CCC,
+               0 6px 0 transparent,
+               0 7px 0 transparent,
+               0 8px 0 transparent,
+               0 9px 0 transparent,
+               0 10px 10px rgba(0, 0, 0, .4);
+            animation: none;
+            top: 4.5rem;
+            font-size: 5.5rem !important;
+            margin: 0 auto;
+        }
+}
+
 </style>

@@ -1,7 +1,7 @@
 <template>
 <div>
 <div class="container rounded mt-5 bg-white p-md-5">
-  <div class="d-flex justify-content-between align-items-center">
+  <div class="d-flex justify-content-between align-items-center" style="overflow:hidden">
     <div class="h2 font-weight-bold">Investment</div>
     <router-link to="/add-investment"><button class="btn btn-primary">Add Investment</button></router-link>
   </div>
@@ -180,7 +180,7 @@ img {
 
 @media(max-width:575px) {
     .container {
-        width: 125%;
+        width: 100%;
         padding: 20px 10px
     }
 }

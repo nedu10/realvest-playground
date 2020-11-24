@@ -1,5 +1,8 @@
 <template>
     <div class="dashboard-layout">
+        <div class="header">
+          <Header />
+        </div>
         <div class="sidebar">
             <sidebar />
         </div>
@@ -10,9 +13,11 @@
 </template>
 
 <script>
+import Header from './Header.vue'
 import Sidebar from './sidebar.vue' 
 export default {
     components: {
+      'Header': Header,
       'sidebar': Sidebar,
     }
 }
@@ -21,7 +26,17 @@ export default {
 <style lang="scss" scoped>
 .dashboard-layout{
     display: flex;
+    @media (max-width: 54rem) {
+          display: block;
+     }
 }
+.header{
+  display: none;
+  @media (max-width: 54rem) {
+          display: block;
+     }
+}
+
 .sidebar {
   background-color: white;
   width: 20%;
@@ -33,6 +48,9 @@ export default {
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;
+  @media (max-width: 54rem) {
+          display: none;
+     }
 }
 
 .main {
@@ -40,13 +58,17 @@ export default {
   margin-left: 20%;
   width: 80%;
   min-height: 100vh;
+  padding: 3rem 7rem;
+  @media (max-width: 54rem) {
+          width: 100%;
+          margin: 0;
+          padding: 3rem 1rem;
+     }
 }
 .nav-bottom{
   margin-top: 100px
 }
-.main {
-  padding: 3rem 7rem;
-}
+
 
 .main-title {
   display: flex;
